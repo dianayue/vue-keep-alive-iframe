@@ -1,18 +1,18 @@
 {
-  "name": "keep-alive-iframe",
-  "version": "1.0.22",
-  "description": "A Vue component for managing iframe lifecycle with keep-alive functionality",
+  "name": "vue-keep-alive-iframe",
+  "version": "1.0.0",
+  "description": "A Vue 2.7+ / Vue 3 iframe component with keep-alive functionality",
   "type": "module",
-  "main": "dist/keep-alive-iframe.umd.js",
-  "module": "dist/keep-alive-iframe.es.js",
+  "main": "dist/vue-keep-alive-iframe.umd.js",
+  "module": "dist/vue-keep-alive-iframe.es.js",
   "types": "dist/types/index.d.ts",
   "files": [
     "dist"
   ],
   "exports": {
     ".": {
-      "import": "./dist/keep-alive-iframe.es.js",
-      "require": "./dist/keep-alive-iframe.umd.js"
+      "import": "./dist/vue-keep-alive-iframe.es.js",
+      "require": "./dist/vue-keep-alive-iframe.umd.js"
     }
   },
   "scripts": {
@@ -30,15 +30,12 @@
     "check-env": "./scripts/check-env.sh",
     "diagnose-env": "./scripts/diagnose-env.sh"
   },
-  "dependencies": {
-    "@iconify/vue": "^5.0.0",
-    "@vueuse/core": "^13.3.0",
-    "vue": "^3.5.13",
-    "vue-router": "^4.5.1"
-  },
+  "dependencies": {},
   "devDependencies": {
+    "@iconify/vue": "^5.0.0",
     "@vitejs/plugin-vue": "^5.2.3",
     "@vue/tsconfig": "^0.7.0",
+    "@vueuse/core": "^13.3.0",
     "bumpp": "^10.1.1",
     "chalk": "4.1.2",
     "changelogithub": "^13.15.0",
@@ -47,13 +44,17 @@
     "unocss": "^66.1.3",
     "vite": "^6.3.5",
     "vite-plugin-dts": "^4.5.4",
+    "vue": "^3.5.13",
+    "vue-router": "^4.5.1",
     "vue-tsc": "^2.2.8"
   },
   "peerDependencies": {
-    "vue": "^3.0.0"
+    "vue": ">=2.7.0 || >=3.0.0"
   },
   "keywords": [
     "vue",
+    "vue2",
+    "vue3",
     "iframe",
     "keep-alive",
     "component",
@@ -63,11 +64,11 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/XinXiaoIsMe/keep-alive-iframe.git"
+    "url": "git+https://github.com/dianayue/vue-keep-alive-iframe.git"
   },
   "bugs": {
-    "url": "https://github.com/XinXiaoIsMe/keep-alive-iframe/issues"
+    "url": "https://github.com/dianayue/vue-keep-alive-iframe/issues"
   },
-  "homepage": "https://github.com/XinXiaoIsMe/keep-alive-iframe#readme",
+  "homepage": "https://github.com/dianayue/vue-keep-alive-iframe#readme",
   "packageManager": "pnpm@9.5.0"
 }

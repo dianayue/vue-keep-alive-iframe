@@ -1,5 +1,3 @@
-import type { StyleValue } from "vue";
-
 export interface HTMLElementRect {
   width: number;
   height: number;
@@ -261,7 +259,7 @@ export class KAliveFrame implements IFrameInstance {
     this.el.src = src;
   }
 
-  private setStyle(style: StyleValue): void {
+  private setStyle(style: Record<string, string>): void {
     if (!this.el) return;
     Object.assign(this.el.style, style);
   }

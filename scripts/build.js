@@ -40,17 +40,16 @@ async function buildLib() {
       build: {
         lib: {
           entry: resolve(__dirname, '../src/libs/index.ts'),
-          name: 'KeepAliveIframe',
-          fileName: (format) => `keep-alive-iframe.${format}.js`,
+          name: 'VueKeepAliveIframe',
+          fileName: (format) => `vue-keep-alive-iframe.${format}.js`,
         },
         copyPublicDir: false,
         sourcemap: true,
         rollupOptions: {
-          external: ['vue', '@vueuse/core'],
+          external: ['vue'],
           output: {
             globals: {
               vue: 'Vue',
-              '@vueuse/core': 'VueUse',
             },
             exports: 'named',
           },
@@ -62,16 +61,16 @@ async function buildLib() {
     console.log(chalk.blue('\n📦 生成 package.json...'))
     const { readFileSync } = await import('fs')
     const originalPkg = JSON.parse(readFileSync('package.json', 'utf-8'))
-    
+
     // 生成构建后的 package.json
     const distPkgContent = {
       name: originalPkg.name,
       version: originalPkg.version,
       description: originalPkg.description,
-      main: './keep-alive-iframe.umd.js',
-      module: './keep-alive-iframe.es.js',
+      main: './vue-keep-alive-iframe.umd.js',
+      module: './vue-keep-alive-iframe.es.js',
       types: './types/index.d.ts',
-      style: './keep-alive-iframe.css',
+      style: './vue-keep-alive-iframe.css',
       files: [
         '*.js',
         '*.js.map',
@@ -81,11 +80,11 @@ async function buildLib() {
       ],
       exports: {
         '.': {
-          import: './keep-alive-iframe.es.js',
-          require: './keep-alive-iframe.umd.js',
+          import: './vue-keep-alive-iframe.es.js',
+          require: './vue-keep-alive-iframe.umd.js',
           types: './types/index.d.ts'
         },
-        './style.css': './keep-alive-iframe.css'
+        './style.css': './vue-keep-alive-iframe.css'
       },
       keywords: originalPkg.keywords || ['vue', 'iframe', 'keep-alive'],
       author: originalPkg.author,
@@ -94,11 +93,10 @@ async function buildLib() {
       repository: originalPkg.repository,
       bugs: originalPkg.bugs,
       peerDependencies: {
-        vue: '^3.0.0',
-        '@vueuse/core': '^13.0.0'
+        vue: '>=2.7.0 || >=3.0.0'
       }
     }
-    
+
     writeFileSync('dist/package.json', JSON.stringify(distPkgContent, null, 2))
 
     // 复制 README
@@ -108,7 +106,7 @@ async function buildLib() {
     // 构建完成
     console.log(chalk.green('\n✨ 构建完成！'))
     console.log(chalk.gray('输出目录: ') + chalk.yellow('dist/'))
-    
+
     // 显示生成的文件
     console.log(chalk.blue('\n📁 生成的文件:'))
     const { readdirSync, statSync } = await import('fs')
@@ -132,4 +130,4 @@ async function buildLib() {
   }
 }
 
-buildLib() 
+buildLib()

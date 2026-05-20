@@ -19,9 +19,43 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, watch, onUnmounted, onMounted, useTemplateRef, onDeactivated, onActivated } from 'vue';
-import { useResizeObserver, useThrottleFn } from '@vueuse/core';
+import { ref, watch, onUnmounted, onMounted, onDeactivated, onActivated, type Ref } from 'vue';
 import { type HTMLElementRect, FrameManager, generateId } from './core';
+
+function useThrottleFn<T extends (...args: any[]) => any>(fn: T, ms: number, trailing = false) {
+    let lastCall = 0
+    let lastArgs: Parameters<T> | null = null
+    let timer: ReturnType<typeof setTimeout> | null = null
+
+    return (...args: Parameters<T>) => {
+        const now = Date.now()
+        if (now - lastCall >= ms) {
+            lastCall = now
+            fn(...args)
+            if (timer) { clearTimeout(timer); timer = null }
+        } else if (trailing) {
+            lastArgs = args
+            if (!timer) {
+                timer = setTimeout(() => {
+                    if (lastArgs) { fn(...lastArgs); lastArgs = null }
+                    timer = null
+                }, ms - (now - lastCall))
+            }
+        }
+    }
+}
+
+function useResizeObserver(target: Ref<HTMLElement | null>, callback: (entry: ResizeObserverEntry) => void) {
+    let observer: ResizeObserver | null = null
+    watch(target, (el) => {
+        if (observer) observer.disconnect()
+        if (el) {
+            observer = new ResizeObserver((entries) => callback(entries[0]))
+            observer.observe(el)
+        }
+    }, { immediate: true })
+    onUnmounted(() => observer?.disconnect())
+}
 
 const props = withDefaults(defineProps<{
     src: string;
@@ -47,7 +81,7 @@ const emit = defineEmits<{
     cacheMiss: [],
 }>();
 
-const iframeContainerRef = useTemplateRef('iframeContainerRef');
+const iframeContainerRef = ref<HTMLElement | null>(null);
 const uid = generateId();
 const isLoading = ref(false);
 const isError = ref(false);
