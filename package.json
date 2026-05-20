@@ -1,6 +1,6 @@
 {
   "name": "vue-keep-alive-iframe",
-  "version": "1.1.0",
+  "version": "1.1.6",
   "description": "A Vue 2.7+ iframe component with keep-alive functionality",
   "type": "module",
   "license": "MIT",
@@ -13,7 +13,6 @@
     "url": "https://github.com/dianayue/vue-keep-alive-iframe/issues"
   },
   "homepage": "https://github.com/dianayue/vue-keep-alive-iframe#readme",
-  "packageManager": "pnpm@9.5.0",
   "engines": {
     "node": ">=16.0.0"
   },
@@ -42,7 +41,8 @@
     "changelog": "changelogithub",
     "setup-env": "./scripts/setup-env.sh",
     "check-env": "./scripts/check-env.sh",
-    "diagnose-env": "./scripts/diagnose-env.sh"
+    "diagnose-env": "./scripts/diagnose-env.sh",
+    "publish": "npm publish dist/ --access public --registry https://registry.npmjs.org/"
   },
   "devDependencies": {
     "@iconify/vue": "^5.0.0",
