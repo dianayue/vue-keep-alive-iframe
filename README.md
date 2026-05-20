@@ -1,6 +1,6 @@
 # Vue Keep Alive iFrame
 
-> 一个支持 keep-alive 功能的 Vue 2.7+ / Vue 3 iframe 组件，解决 iframe 在路由切换时被销毁的问题。
+> 一个支持 keep-alive 功能的 Vue 2.7+ iframe 组件，解决 iframe 在路由切换时被销毁的问题。
 
 [![npm version](https://img.shields.io/npm/v/vue-keep-alive-iframe.svg)](https://www.npmjs.com/package/vue-keep-alive-iframe)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -9,7 +9,7 @@
 ## 核心特性
 
 - **Keep-Alive 支持** - iframe 在路由切换时保持状态不被销毁
-- **Vue 2.7+ / Vue 3 双版本兼容** - 一套代码，两个版本通用
+- **Vue 2.7+ 双版本兼容** - 一套代码，两个版本通用
 - **响应式设计** - 自动适配容器尺寸变化
 - **智能缓存管理** - 支持最大缓存数量限制和 LRU 策略
 - **灵活样式** - 支持自定义加载和错误状态
@@ -39,7 +39,7 @@ pnpm add vue-keep-alive-iframe
   <div>
     <KeepAliveFrame
       :src="currentSrc"
-      :keep-alive="true"
+      keep-alive
       @load="handleLoad"
       @error="handleError"
     />

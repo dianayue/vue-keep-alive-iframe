@@ -1,8 +1,22 @@
 {
   "name": "vue-keep-alive-iframe",
-  "version": "1.0.0",
-  "description": "A Vue 2.7+ / Vue 3 iframe component with keep-alive functionality",
+  "version": "1.1.0",
+  "description": "A Vue 2.7+ iframe component with keep-alive functionality",
   "type": "module",
+  "license": "MIT",
+  "author": "Steven",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dianayue/vue-keep-alive-iframe.git"
+  },
+  "bugs": {
+    "url": "https://github.com/dianayue/vue-keep-alive-iframe/issues"
+  },
+  "homepage": "https://github.com/dianayue/vue-keep-alive-iframe#readme",
+  "packageManager": "pnpm@9.5.0",
+  "engines": {
+    "node": ">=16.0.0"
+  },
   "main": "dist/vue-keep-alive-iframe.umd.js",
   "module": "dist/vue-keep-alive-iframe.es.js",
   "types": "dist/types/index.d.ts",
@@ -49,21 +63,13 @@
   "keywords": [
     "vue",
     "vue2",
-    "vue3",
     "iframe",
     "keep-alive",
     "component",
     "cache"
   ],
-  "author": "",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/dianayue/vue-keep-alive-iframe.git"
-  },
-  "bugs": {
-    "url": "https://github.com/dianayue/vue-keep-alive-iframe/issues"
-  },
-  "homepage": "https://github.com/dianayue/vue-keep-alive-iframe#readme",
-  "packageManager": "pnpm@9.5.0"
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
+  }
 }
