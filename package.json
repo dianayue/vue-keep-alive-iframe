@@ -1,26 +1,56 @@
 {
   "name": "vue-keep-alive-iframe",
   "version": "1.0.0",
-  "description": "A Vue 2.7+ / Vue 3 iframe component with keep-alive functionality",
+  "description": "Vue 2.7+ / Vue 3 iframe keep-alive component with LRU cache, responsive layout and programmatic API",
   "type": "module",
-  "main": "dist/vue-keep-alive-iframe.umd.js",
-  "module": "dist/vue-keep-alive-iframe.es.js",
-  "types": "dist/types/index.d.ts",
+  "license": "MIT",
+  "author": "Steven",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dianayue/vue-keep-alive-iframe.git"
+  },
+  "bugs": {
+    "url": "https://github.com/dianayue/vue-keep-alive-iframe/issues"
+  },
+  "homepage": "https://github.com/dianayue/vue-keep-alive-iframe#readme",
+  "packageManager": "pnpm@9.5.0",
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "keywords": [
+    "vue",
+    "vue2",
+    "vue3",
+    "vue-component",
+    "iframe",
+    "keep-alive",
+    "cache",
+    "lru",
+    "responsive",
+    "typescript"
+  ],
+  "main": "./dist/vue-keep-alive-iframe.umd.js",
+  "module": "./dist/vue-keep-alive-iframe.es.js",
+  "types": "./dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/vue-keep-alive-iframe.es.js",
+      "require": "./dist/vue-keep-alive-iframe.umd.js"
+    },
+    "./style.css": "./dist/vue-keep-alive-iframe.css"
+  },
   "files": [
     "dist"
   ],
-  "exports": {
-    ".": {
-      "import": "./dist/vue-keep-alive-iframe.es.js",
-      "require": "./dist/vue-keep-alive-iframe.umd.js"
-    }
-  },
+  "sideEffects": [
+    "*.css"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc -b && vite build",
-    "preview": "vite preview",
-    "remove": "rimraf node_modules",
     "build:lib": "node scripts/build.js",
+    "preview": "vite preview",
     "release": "bumpp && pnpm run build:lib && pnpm publish dist/ --access public && changelogithub",
     "release:patch": "bumpp patch && pnpm run build:lib && pnpm publish dist/ --access public && changelogithub",
     "release:minor": "bumpp minor && pnpm run build:lib && pnpm publish dist/ --access public && changelogithub",
@@ -28,7 +58,8 @@
     "changelog": "changelogithub",
     "setup-env": "./scripts/setup-env.sh",
     "check-env": "./scripts/check-env.sh",
-    "diagnose-env": "./scripts/diagnose-env.sh"
+    "diagnose-env": "./scripts/diagnose-env.sh",
+    "clean": "rimraf node_modules"
   },
   "dependencies": {},
   "devDependencies": {
@@ -51,24 +82,8 @@
   "peerDependencies": {
     "vue": ">=2.7.0 || >=3.0.0"
   },
-  "keywords": [
-    "vue",
-    "vue2",
-    "vue3",
-    "iframe",
-    "keep-alive",
-    "component",
-    "cache"
-  ],
-  "author": "",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/dianayue/vue-keep-alive-iframe.git"
-  },
-  "bugs": {
-    "url": "https://github.com/dianayue/vue-keep-alive-iframe/issues"
-  },
-  "homepage": "https://github.com/dianayue/vue-keep-alive-iframe#readme",
-  "packageManager": "pnpm@9.5.0"
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
+  }
 }
