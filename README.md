@@ -39,7 +39,7 @@ pnpm add vue-keep-alive-iframe
   <div>
     <KeepAliveFrame
       :src="currentSrc"
-      :keep-alive="true"
+      keep-alive
       @load="handleLoad"
       @error="handleError"
     />
@@ -226,15 +226,18 @@ const options: IFrameOptions = {
 ## 注意事项
 
 ### 跨域限制
+
 - iframe 内容需要允许跨域嵌入
 - 可能需要设置适当的 CSP 策略
 
 ### 滚动同步
+
 当启用 `keepAlive` 时，如果父容器有滚动：
 - 传递 `parentContainer` 属性以启用滚动同步
 - 或考虑将 `keepAlive` 设为 `false`
 
 ### 性能考虑
+
 - 合理设置 `maxCacheSize` 避免内存过度占用
 - 及时清理不需要的 iframe 缓存
 
