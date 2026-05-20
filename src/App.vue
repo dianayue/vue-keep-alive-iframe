@@ -6,13 +6,17 @@
       <router-link class="btn m-l-10px" to="/search">Search(测试显示隐藏iframe)</router-link>
       <router-link class="btn m-l-10px" to="/frame_cache_test">缓存测试</router-link>
     </div>
-    <router-view v-slot="{ Component }">
-      <KeepAlive>
-        <component class="flex-1 border-[#ccc] border-solid border-1px" :is="Component" />
-      </KeepAlive>
-    </router-view>
+    <keep-alive>
+      <router-view class="flex-1 border-[#ccc] border-solid border-1px" />
+    </keep-alive>
   </div>
 </template>
+
+<script>
+export default {
+  name: 'App'
+}
+</script>
 
 <style>
 body, html {

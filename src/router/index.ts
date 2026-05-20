@@ -1,6 +1,6 @@
-import { createRouter, createWebHashHistory } from "vue-router";
+import VueRouter from 'vue-router'
 
-const router = createRouter({
+const router = new VueRouter({
   routes: [
     {
       path: '/',
@@ -23,7 +23,7 @@ const router = createRouter({
       component: () => import('../views/FrameCacheTest.vue')
     }
   ],
-  history: createWebHashHistory()
+  mode: 'hash'
 })
 
 export default router

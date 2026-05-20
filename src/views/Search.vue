@@ -12,7 +12,6 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue';
-import { useToggle } from '@vueuse/core';
 import KeepAliveFrame, { type HTMLElementRect } from '../libs';
 
 const URLS = {
@@ -21,7 +20,11 @@ const URLS = {
 };
 
 const src = ref(URLS.baidu);
-const [visible, toggle] = useToggle(true);
+const visible = ref(true);
+
+function toggle() {
+  visible.value = !visible.value;
+}
 
 function toggleSearch(address: string) {
   src.value = address;
